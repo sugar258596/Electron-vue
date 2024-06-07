@@ -10,15 +10,19 @@ function createWindow(): void {
     height: 670,
     show: false,
     autoHideMenuBar: true,
-    ...(process.platform === 'linux' ? { icon } : {}),
+    // ...(process.platform === 'linux' ? { icon } : {}),
+    icon,
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false
-    }
+    },
+    disableAutoHideCursor: true
   })
 
+  // 程序启动，打开窗口
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
+    mainWindow.setTitle('仿哔哩哔哩')
   })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
@@ -51,7 +55,6 @@ app.whenReady().then(() => {
 
   // IPC test
   ipcMain.on('ping', () => console.log('pong'))
-  ipcMain.on('ping2', () => console.log('接受到了消息'))
 
   createWindow()
 
@@ -65,6 +68,7 @@ app.whenReady().then(() => {
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
+// 关闭窗口，退出程序
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
