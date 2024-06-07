@@ -1,17 +1,16 @@
 <template>
-  <div class="h-20 bg-blue">头部</div>
-  <RouterView>
-    <template #default="{ Component, route }">
-      <transition mode="out-in" appear>
-        <keep-alive>
-          <component :is="Component" :key="route.fullPath" />
-        </keep-alive>
-      </transition>
-    </template>
-  </RouterView>
+  <Layout class="h-full">
+    <LayoutSider />
+    <Layout>
+      <LayoutHeader />
+      <LayoutContent />
+    </Layout>
+  </Layout>
 </template>
-
-<script setup lang="ts">
-
+<script lang="ts" setup>
+import { Layout } from 'ant-design-vue'
+import LayoutSider from '@/layouts/defult/sider/index.vue'
+import LayoutHeader from '@/layouts/defult/header/index.vue'
+import LayoutContent from '@/layouts/defult/content/index.vue'
 </script>
 <style lang="scss" scoped></style>

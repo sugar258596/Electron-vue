@@ -4,7 +4,19 @@
     "@/*": ["src/renderer/src/*"]
   }
 },
-"include": ["src/renderer/src/*"],
+"include": [
+  "tests/**/*.ts",
+  "src/**/*.ts",
+  "src/**/*.d.ts",
+  "src/**/*.tsx",
+  "src/**/*.vue",
+  "types/**/*.d.ts",
+  "types/**/*.ts",
+  "build/**/*.ts",
+  "build/**/*.d.ts",
+  "mock/**/*.ts",
+  "vite.config.ts"
+],
   "files": [],
   "references": [{ "path": "./tsconfig.node.json" }, { "path": "./tsconfig.web.json" }]
 }

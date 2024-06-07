@@ -15,6 +15,9 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0(electron@28.3.3)
     devDependencies:
+      '@ant-design/icons-vue':
+        specifier: ^7.0.1
+        version: 7.0.1(vue@3.4.27(typescript@5.4.5))
       '@electron-toolkit/eslint-config':
         specifier: ^1.0.2
         version: 1.0.2(eslint@8.57.0)
