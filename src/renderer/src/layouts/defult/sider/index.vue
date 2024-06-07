@@ -1,6 +1,8 @@
 <template>
   <layout-sider class="h-100vh" v-model:collapsed="collapsed" :trigger="null" collapsible>
-    <div class="h-8 m-8 bg-bluegray" />
+    <div class="h-16  w-full py-2">
+      <img class="img-contain " src="@/assets/electron.svg" alt="" srcset="">
+    </div>
     <Menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
       <menu-item key="1">
         <user-outlined />
@@ -12,6 +14,10 @@
       </menu-item>
       <menu-item key="3">
         <span>nav 3</span>
+      </menu-item>
+
+      <menu-item key="4">
+        <span @click="collapsed = !collapsed">按钮</span>
       </menu-item>
     </Menu>
   </layout-sider>

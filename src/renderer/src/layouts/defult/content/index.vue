@@ -1,5 +1,5 @@
 <template>
-  <layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
+  <layout-content class="mx-2 my-3 p-3 bg-white bor-rd-3">
     <RouterView></RouterView>
   </layout-content>
 </template>
