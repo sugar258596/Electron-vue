@@ -17,7 +17,7 @@ export default defineConfig({
       full: 'w-full h-full'
     },
     [/^grid-(\d+)-(\d+)$/, ([, c, g = 0]) => `grid grid-cols-${c}  gap-${g}`],
-    [/^img-(.*)$/, ([, c]) => `full object-${c}`],
+    [/^image-(.*)$/, ([, c]) => `full object-${c}`],
     [/^ma-(\d+)-(\d+)$/, ([, i, b]) => `mx-${i} my-${b}`],
     [/^pa-(\d+)-(\d+)$/, ([, i, b]) => `px-${i} py-${b}`],
     [/^bor-(\d+)-(.*)$/, ([, b, c]) => `b-${b} b-solid b-${c}`],
