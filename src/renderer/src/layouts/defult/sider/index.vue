@@ -1,7 +1,7 @@
 <template>
   <layout-sider class="h-100vh" v-model:collapsed="collapsed" :trigger="null" collapsible>
     <div class="h-16  w-full py-2">
-      <img class="img-contain " src="@/assets/electron.svg" alt="" srcset="">
+      <img class="image-contain " src="@/assets/electron.svg" alt="" srcset="">
     </div>
     <Menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
       <menu-item key="1">
