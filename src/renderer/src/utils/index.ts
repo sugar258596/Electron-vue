@@ -17,7 +17,7 @@ export type WithInstall<T> = T & {
 export type CustomComponent = Component & { displayName?: string }
 
 // 组件注册
-export const winthInstall = <T extends CustomComponent>(component: T, alias?: string) => {
+export const withInstall = <T extends CustomComponent>(component: T, alias?: string) => {
   ;(component as Record<string, unknown>).install = (app: App) => {
     const compName = component.displayName || component.name
     if (!compName) return

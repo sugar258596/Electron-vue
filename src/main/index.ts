@@ -10,8 +10,9 @@ function createWindow(): void {
     minWidth: 650,
     height: 670,
     minHeight: 450,
-    show: false,
+    show: false, // 隐藏窗口
     autoHideMenuBar: true,
+    title: '仿哔哩哔哩',
     // ...(process.platform === 'linux' ? { icon } : {}),
     icon,
     webPreferences: {
@@ -21,13 +22,14 @@ function createWindow(): void {
     disableAutoHideCursor: true
   })
 
-  // 程序启动，打开窗口
+  //  页面绘制完成后显示
   mainWindow.on('ready-to-show', () => {
-    mainWindow.show()
-    mainWindow.setTitle('仿哔哩哔哩')
+    mainWindow.show() // 显示窗口
   })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
+    console.log(details)
+
     shell.openExternal(details.url)
     return { action: 'deny' }
   })
@@ -70,7 +72,7 @@ app.whenReady().then(() => {
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
-// 关闭窗口，退出程序
+// 所有的窗口关闭时退出
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
