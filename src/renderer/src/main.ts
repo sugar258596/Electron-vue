@@ -3,7 +3,8 @@ import 'ant-design-vue/dist/reset.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 
-import { setupRouter } from '@/router'
+import { router, setupRouter } from '@/router'
+import { setupRouterGuard } from '@/router/guard'
 import { setupGlobDirectives } from '@/directives'
 
 function bootstrap() {
@@ -11,6 +12,9 @@ function bootstrap() {
 
   //注册路由
   setupRouter(app)
+
+  // 注册路由守卫
+  setupRouterGuard(router)
 
   // 注册全局指令
   setupGlobDirectives(app)
