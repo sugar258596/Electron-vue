@@ -1,5 +1,6 @@
 {
   "extends":"@electron-toolkit/tsconfig/tsconfig.node.json",
+  "exclude": [".js", ".jsx", ".ts", ".tsx", ".vue", ".json"],
   "include": ["electron.vite.config.*", "src/main/**/*", "src/preload/**/*"],
   "compilerOptions": {
     "composite": true,
