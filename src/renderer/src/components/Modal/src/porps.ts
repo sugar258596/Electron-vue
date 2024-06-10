@@ -1,10 +1,12 @@
 export const baseProps = {
   open: { type: Boolean },
   title: { type: String },
-  scrollTop: { type: Boolean, default: true },
+  cancelText: { type: String },
+  okType: { type: String },
+  okText: { type: String },
+  // 高度
   height: { type: Number },
   minHeight: { type: Number },
-  // open drag
-  draggable: { type: Boolean, default: true },
+  // 是否居中显示
   centered: { type: Boolean }
 }
