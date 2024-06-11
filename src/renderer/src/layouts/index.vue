@@ -1,7 +1,7 @@
 <template>
-  <Layout class="h-full">
+  <Layout class="w-full h-full">
     <LayoutSider />
-    <Layout>
+    <Layout class="h-100vh">
       <LayoutHeader />
       <LayoutContent />
     </Layout>
