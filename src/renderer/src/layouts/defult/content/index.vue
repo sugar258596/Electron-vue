@@ -1,5 +1,5 @@
 <template>
-  <layout-content class="mx-2 my-3 p-3 bg-white bor-rd-3">
+  <layout-content class="mx-2 my-3 p-3 bg-white bor-rd-3 overflow-overlay">
     <RouterView></RouterView>
   </layout-content>
 </template>
@@ -8,4 +8,27 @@
 import { LayoutContent } from 'ant-design-vue'
 
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+/* 宽 */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* 轨道 */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* 滑块 */
+::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  border-radius: 50rem;
+  padding-inline: 2px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* 指向鼠标时的滑块 */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+</style>
