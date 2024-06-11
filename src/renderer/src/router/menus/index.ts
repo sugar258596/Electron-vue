@@ -15,7 +15,7 @@ export const asyncRoutes = [...routeModuleList]
 export const RootRoute: AppRouteRecordRaw = {
   path: '/',
   name: 'Root',
-  redirect: '/login',
+  redirect: '/main',
   meta: {
     title: 'Root'
   }
@@ -30,4 +30,4 @@ export const LoginRoute: AppRouteRecordRaw = {
   }
 }
 
-export const basicRoutes = [LoginRoute, RootRoute]
+export const basicRoutes = [LoginRoute, RootRoute, ...asyncRoutes]
