@@ -2,7 +2,8 @@
   "baseUrl": "*",
   "module": "NodeNext",
   "paths": {
-    "@/*": ["src/renderer/src/*"]
+    "@/*": ["src/renderer/src/*"],
+    "#/":["src/renderer/types/*"]
   }
 },
 "include": [
