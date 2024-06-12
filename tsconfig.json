@@ -15,7 +15,7 @@
   "src/renderer/types/**/*.ts",
   "src/renderer/build/**/*.ts",
   "src/renderer/build/**/*.d.ts",
-  "src/renderer/mock/**/*.ts",
+  "mock/**/*.ts",
   "vite.config.ts"
 ],
 "exclude": [".js", ".jsx", ".ts", ".tsx", ".vue", ".json"],
