@@ -1,6 +1,8 @@
 <template>
   <div class="w-full h-50 bg-blue relative">
-    <div class="absolute bottom-1 left-0 px-2 flex justify-between w-full text-3 color-white">
+    <div
+      class="absolute bottom-1 left-0 px-2 flex justify-between w-full text-3 color-white user-none"
+    >
       <div class="flex-center gap-2">
         <div class="flex-center gap-1 h-4">
           <BaseSvg :src="bofan" :alt="'播放量'"></BaseSvg>

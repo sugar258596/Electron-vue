@@ -3,7 +3,7 @@
     <div class="text-3.5 line-clamp-2">
       {{ video.title }}
     </div>
-    <div class="flex gap-1 text-3 items-center color-zinc-400">
+    <div class="flex gap-1 text-3 items-center color-zinc-400 user-none">
       <div class="h-4 w-4">
         <BaseSvg :src="up" :alt="'up主'"></BaseSvg>
       </div>

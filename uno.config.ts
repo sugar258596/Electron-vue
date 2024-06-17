@@ -36,7 +36,8 @@ export default defineConfig({
         'min-height': '100vh'
       }
     ],
-    ['bg-linear', { background: 'linear-gradient(to right,#9f9fd9, pink)' }]
+    ['bg-linear', { background: 'linear-gradient(to right,#9f9fd9, pink)' }],
+    ['user-none', { 'user-select': 'none' }]
   ],
   theme: {
     // 解决小程序不支持 * 选择器
