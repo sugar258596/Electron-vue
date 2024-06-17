@@ -3,10 +3,10 @@
     <div class="h-full flex justify-between">
       <div class="flex gap-5">
         <div class="h-full ">
-          <img class="image-contain" src="../../../assets/blbl.svg" alt="" srcset="">
+          <img class="image-contain" :src="blbl" alt="" srcset="">
         </div>
         <div class="flex gap-3">
-          <template v-for="v in  headerList " :key="v.id">
+          <template v-for="v in headerList " :key="v.id">
             <div class="cursor cursor-pointer " @click="headActive(v.id)">
               <span
                 class="py-2 mx-2 color-black font-black relative before:absolute before:content-empty before:bottom-0 before:left-0 before:h-2px before:bg-pink-500 before:w-0"
@@ -27,6 +27,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { LayoutHeader, Input } from 'ant-design-vue'
+import { blbl } from '@/assets/svg'
 
 import { headerList } from './data'
 
