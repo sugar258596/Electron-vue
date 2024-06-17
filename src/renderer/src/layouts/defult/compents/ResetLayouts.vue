@@ -1,41 +1,45 @@
 <template>
-  <div ref="resetButton"
+  <div
+    ref="resetButton"
     class="reset fixed right-13 bottom-15 z-999 p-2 bor-rd-10 cursor-pointer bg-light-400 hover:bg-stone-200"
-    @click="handleResetClick">
-    <img class="image-contain" :src="reset" alt="" srcset="">
+    @click="handleResetClick"
+  >
+    <BaseSvg :src="reset" :alt="'重置'"></BaseSvg>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, nextTick } from 'vue';
-import { reset } from '@/assets/svg';
+import { ref, nextTick } from 'vue'
+import { BaseSvg } from '@/components/Svg'
+import { reset } from '@/assets/svg'
+import { useLayoutStore } from '@/store/modules/layout'
+
+const userLaout = useLayoutStore()
 
 const emits = defineEmits<{
   handleResetClick
-}>();
+}>()
 
-
-const resetButton = ref<HTMLDivElement>();
-const resetTime = ref<NodeJS.Timeout>();
-const isResetting = ref(false);
-const animationDuration = ref(500);
-
+const resetButton = ref<HTMLDivElement>()
+const resetTime = ref<NodeJS.Timeout>()
+const isResetting = ref(false)
+const animationDuration = ref(500)
 
 // 重置按钮点击事件
 const handleResetClick = () => {
-  if (!resetButton.value) return;
-  if (isResetting.value) return;
-  isResetting.value = true;
-  resetButton.value.classList.add('rotate-once');
-  resetButton.value.style.animationDuration = `${animationDuration.value}ms`;
+  if (!resetButton.value) return
+  if (isResetting.value) return
+  isResetting.value = true
+  resetButton.value.classList.add('rotate-once')
+  resetButton.value.style.animationDuration = `${animationDuration.value}ms`
   nextTick(() => {
     resetTime.value = setTimeout(() => {
-      resetButton.value?.classList.remove('rotate-once');
-      isResetting.value = false;
-    }, animationDuration.value);
-  });
-  emits('handleResetClick')
-};
+      resetButton.value?.classList.remove('rotate-once')
+      isResetting.value = false
+    }, animationDuration.value)
+  })
+  userLaout.resetVideoList()
+}
 </script>
 
 <style lang="scss" scoped>
@@ -52,7 +56,7 @@ const handleResetClick = () => {
 }
 
 .rotate-once {
-  animation: rotate-once .5s linear;
+  animation: rotate-once 0.5s linear;
 }
 
 @keyframes rotate-once {
