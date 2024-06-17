@@ -42,6 +42,13 @@ const handleResetClick = () => {
 .reset {
   box-shadow: 0 0 10px #ccc;
   transition: all 0.3s;
+  // 禁止被选中
+  user-select: none;
+  // 禁止鼠标右键
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
 }
 
 .rotate-once {
