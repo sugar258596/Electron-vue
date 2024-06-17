@@ -10,7 +10,7 @@
             <div class="cursor cursor-pointer" @click="headActive(v.id)">
               <span
                 class="py-2 mx-2 color-black font-black relative before:absolute before:content-empty before:bottom-0 before:left-0 before:h-2px before:bg-pink-500 before:w-0"
-                :class="[v.id == active ? 'avation' : '']"
+                :class="[v.id == active ? 'avation before:w-full' : '']"
               >
                 {{ v.title }}
               </span>
