@@ -38,7 +38,7 @@ const handleResetClick = () => {
       isResetting.value = false
     }, animationDuration.value)
   })
-  userLaout.resetVideoList()
+  userLaout.apiVideoList(true)
 }
 </script>
 

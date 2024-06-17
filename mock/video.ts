@@ -10,20 +10,21 @@ interface VideoType {
   cover: string
   // 视频标题
   title: string
-  // 发布的upz主
+  // 发布的up主
   up: string
-  //发布时间
+  // 发布时间
   creTime: string
-  //视频时长
+  // 视频时长
   duration: string
-  //播放量
+  // 播放量
   playCount: string
   // 评论数
   commentCount: string
 }
 
 const videoList: VideoType[] = Mock.mock({
-  'list|10': [
+  'list|100': [
+    // 生成100条数据用于分页演示
     {
       'id|+1': 1,
       url: '@url()',
@@ -52,7 +53,7 @@ function formatTime(time: string) {
   return `${min}:${sec > 9 ? sec : '0' + sec}`
 }
 
-//将数字按照 千分位或者万分位格式化
+// 将数字按照千分位或者万分位格式化
 function formatNumber(n: string) {
   const num = Number(n)
   if (num < 10000 && num > 1000) {
@@ -71,6 +72,23 @@ export default [
     url: '/api/video',
     timeout: 100,
     method: 'get',
-    response: videoList
+    response: ({ query }) => {
+      const page = parseInt(query.page) || 1
+      const pageSize = parseInt(query.pageSize) || 10
+      const total = videoList.length
+      const start = (page - 1) * pageSize
+      const end = page * pageSize
+      const items = videoList.slice(start, end)
+      return {
+        code: 0,
+        message: 'success',
+        total,
+        data: items,
+        page: {
+          page,
+          pageSize
+        }
+      }
+    }
   }
 ] as MockMethod[]
