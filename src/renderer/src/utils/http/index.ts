@@ -3,11 +3,32 @@ import { VAxios } from './axios'
 import { deepMerge } from '../index'
 import { clone } from 'lodash'
 import { ContentTypeEnum } from '@/enums/httpEnum'
-import { AxiosTransform } from './axiosTransform'
+import { AxiosTransform, CreateAxiosOptions } from './axiosTransform'
+import { AxiosRequestConfig, AxiosResponse } from 'axios'
+import { RequestOptions, Result } from '#/axios'
 
-const transform: AxiosTransform = {}
+const transform: AxiosTransform = {
+  /**
+   * @description 请求之前的处理器
+   * @param config
+   * @param options
+   * @returns
+   */
+  beforeRequestHook: (config: AxiosRequestConfig, options: RequestOptions) => {
+    return config
+  },
 
-function createAxios(option?: any) {
+  /**
+   * @description 响应数据处理器
+   * @param res
+   * @returns
+   */
+  transformResponseHook: (res: AxiosResponse<Result>, option: RequestOptions) => {
+    return res.data
+  }
+}
+
+function createAxios(opt?: Partial<CreateAxiosOptions>) {
   return new VAxios(
     deepMerge(
       {
@@ -52,7 +73,7 @@ function createAxios(option?: any) {
           }
         }
       },
-      option || {}
+      opt || {}
     )
   )
 }
