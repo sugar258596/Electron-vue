@@ -28,9 +28,9 @@ const videoList: VideoType[] = Mock.mock({
       'id|+1': 1,
       url: '@url()',
       cover: '@image("200x100")',
-      title: '@ctitle(5, 10)',
+      title: '@ctitle(5, 20)',
       up: '@cname()',
-      creTime: '@datetime(yyyy-MM-dd)',
+      creTime: '@datetime(MM-dd)',
       duration: '@integer(10, 100)',
       playCount: '@integer(1, 10000)',
       commentCount: '@integer(1, 10000)'
