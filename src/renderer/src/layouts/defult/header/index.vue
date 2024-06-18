@@ -10,8 +10,7 @@
             <div class="cursor cursor-pointer" @click="headActive(v.id)">
               <span
                 class="py-2 mx-2 color-black font-black relative before:absolute before:content-empty before:bottom-0 before:left-0 before:h-2px before:bg-pink-500 before:w-0"
-                :class="[v.id == active ? 'avation before:w-full' : '']"
-              >
+                :class="[v.id == active ? 'avation before:w-full' : '']">
                 {{ v.title }}
               </span>
             </div>
@@ -19,12 +18,7 @@
         </div>
       </div>
       <div class="h-full">
-        <Input
-          v-model:value="search"
-          placeholder="搜索感兴趣的视频 "
-          allowClear
-          @pressEnter="pressEnter"
-        ></Input>
+        <Input v-model:value="search" placeholder="搜索感兴趣的视频 " allowClear @pressEnter="pressEnter"></Input>
       </div>
     </div>
   </layout-header>
@@ -36,8 +30,11 @@ import { LayoutHeader, Input } from 'ant-design-vue'
 import { BaseSvg } from '@/components/Svg'
 import { blbl } from '@/assets/svg'
 
+import { useLayoutStore } from '@/store/modules/layout'
+
 import { headerList } from './data'
 
+const userLayout = useLayoutStore()
 const active = ref(1)
 
 const search = ref('')
@@ -48,7 +45,7 @@ const headActive = (id: number) => {
 
 // 回车事件
 const pressEnter = () => {
-  console.log('回车搜索', search.value)
+  userLayout.searchVideoList(search.value)
 }
 </script>
 <style lang="scss" scoped>

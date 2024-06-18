@@ -55,12 +55,10 @@ export const useLayoutStore = defineStore({
      * @param {boolean}  reset
      */
     async apiVideoList(reset: boolean = false) {
-      if (!this.canLoadMore) return
+      if (!this.canLoadMore && !reset) return
       this.show = true
       if (reset) {
-        this.VideoList = []
         this.setParams(true)
-        this.first = true
       }
       const { data, total } = await getVideo(this.params)
       this.total = total
@@ -68,10 +66,11 @@ export const useLayoutStore = defineStore({
     },
 
     // 搜索数据
-    async searchVideoList(params: Params) {
+    async searchVideoList(key: string) {
       if (!this.canLoadMore) return
+      if (this.VideoList.length > 0) this.setParams(true)
       this.show = true
-      Object.assign(this.params, params)
+      this.params.keyword = key
       const { data, total } = await getVideo(this.params)
       this.total = total
       this.setVideoList(data)
@@ -96,6 +95,8 @@ export const useLayoutStore = defineStore({
         this.params.page! += 1
         return
       }
+      this.VideoList = []
+      this.first = true
       this.params = {
         page: 1,
         pageSize: 10,

@@ -1,11 +1,18 @@
 import { request } from '@/utils/http'
 
-enum Api {
-  getVideo = '/api/video'
+interface Params {
+  page?: number
+  pageSize?: number
+  keyword?: string
 }
 
-export const getVideo = (params?: any) => {
-  return request.get({
+enum Api {
+  getVideo = '/api/video',
+  searchVideo = '/api/searchVideo'
+}
+
+export const getVideo = (params?: Params) => {
+  return request.post({
     url: Api.getVideo,
     params
   })
