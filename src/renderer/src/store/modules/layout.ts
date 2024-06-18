@@ -67,7 +67,6 @@ export const useLayoutStore = defineStore({
 
     // 搜索数据
     async searchVideoList(key: string) {
-      if (!this.canLoadMore) return
       if (this.VideoList.length > 0) this.setParams(true)
       this.show = true
       this.params.keyword = key
