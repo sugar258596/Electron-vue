@@ -7,7 +7,7 @@ interface Params {
   // 分页
   page?: number
   // 每页条数
-  limit?: number
+  pageSize?: number
   // 搜索关键字
   keyword?: string
 }
@@ -28,7 +28,7 @@ export const useLayoutStore = defineStore({
     show: false,
     params: {
       page: 1,
-      limit: 18,
+      pageSize: 18,
       keyword: ''
     },
     first: true,
@@ -82,7 +82,7 @@ export const useLayoutStore = defineStore({
       this.VideoList = this.VideoList.concat(list)
       this.setParams()
       this.canLoadMore =
-        Math.floor(this.total! / this.params.limit!) >= this.params.page! ? true : false
+        Math.floor(this.total! / this.params.pageSize!) >= this.params.page! ? true : false
       this.show = false
       this.first = false
     },
@@ -98,7 +98,7 @@ export const useLayoutStore = defineStore({
       }
       this.params = {
         page: 1,
-        limit: 10,
+        pageSize: 10,
         keyword: ''
       }
       this.canLoadMore = true
