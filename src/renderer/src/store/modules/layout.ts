@@ -17,6 +17,8 @@ interface LayoutState {
   show: boolean // 是否正在加载数据
   params: Params
   first: boolean // 是否为第一次加载数据
+  canLoadMore: boolean // 是否可以加载更多
+  total?: number // 总数据
 }
 
 export const useLayoutStore = defineStore({
@@ -26,10 +28,12 @@ export const useLayoutStore = defineStore({
     show: false,
     params: {
       page: 1,
-      limit: 10,
+      limit: 18,
       keyword: ''
     },
-    first: true
+    first: true,
+    canLoadMore: true,
+    total: 0
   }),
   getters: {
     getVideo(): any[] {
@@ -40,6 +44,9 @@ export const useLayoutStore = defineStore({
     },
     getFirst(): boolean {
       return this.first
+    },
+    getCanLoadMore(): boolean {
+      return this.canLoadMore
     }
   },
   actions: {
@@ -48,48 +55,53 @@ export const useLayoutStore = defineStore({
      * @param {boolean}  reset
      */
     async apiVideoList(reset: boolean = false) {
-      this.setShow(true)
+      if (!this.canLoadMore) return
+      this.show = true
       if (reset) {
         this.VideoList = []
         this.setParams(true)
         this.first = true
       }
-      const { data } = await getVideo(this.params)
+      const { data, total } = await getVideo(this.params)
+      this.total = total
       this.setVideoList(data)
-      this.setShow(false)
-      this.setParams()
-      this.first = false
     },
 
     // 搜索数据
     async searchVideoList(params: Params) {
+      if (!this.canLoadMore) return
+      this.show = true
       Object.assign(this.params, params)
-      const { data } = await getVideo(this.params)
+      const { data, total } = await getVideo(this.params)
+      this.total = total
       this.setVideoList(data)
-      this.setShow(false)
-      this.setParams()
     },
 
+    // 设置视频列表
     setVideoList(list: any[]) {
       this.VideoList = this.VideoList.concat(list)
+      this.setParams()
+      this.canLoadMore =
+        Math.floor(this.total! / this.params.limit!) >= this.params.page! ? true : false
+      this.show = false
+      this.first = false
     },
-    setShow(show: boolean) {
-      this.show = show
-    },
+
     /**
      * @description 设置分页参数
      * @param flge 是否重置
      */
     setParams(flge: boolean = false) {
-      if (flge) {
-        this.params = {
-          page: 1,
-          limit: 10,
-          keyword: ''
-        }
-      } else {
+      if (!flge) {
         this.params.page! += 1
+        return
       }
+      this.params = {
+        page: 1,
+        limit: 10,
+        keyword: ''
+      }
+      this.canLoadMore = true
     }
   }
 })

@@ -1,8 +1,11 @@
 <template>
   <LayoutFooter>
     <div ref="footer">
-      <div class="flex flex-center gap-2" v-show="show">
+      <div class="  flex-center gap-2" v-if="loadMore" v-show="!show">
         <div class="w-2.5 h-2.5 bg-black bor-rd-10 dot" v-for="v in 4" :key="v"></div>
+      </div>
+      <div class="flex-center" v-else>
+        没有数据来源了哦🍺
       </div>
     </div>
   </LayoutFooter>
@@ -17,6 +20,7 @@ const userLayout = useLayoutStore()
 
 const footer = ref<HTMLDivElement>()
 const show = ref(false)
+const loadMore = ref(true)
 
 watch(
   () => userLayout.getShow,
@@ -24,6 +28,10 @@ watch(
     show.value = n
   }
 )
+watch(() => userLayout.getCanLoadMore, (n) => {
+  loadMore.value = n
+
+})
 
 onMounted(() => {
   if (!footer.value) return
@@ -42,16 +50,20 @@ const observer = new IntersectionObserver((entries: IntersectionObserverEntry[])
 <style lang="scss" scoped>
 .dot {
   animation: wavy 0.8s ease-in infinite alternate;
+
   &:nth-child(2) {
     animation-delay: 0.15s;
   }
+
   &:nth-child(3) {
     animation-delay: 0.25s;
   }
+
   &:nth-child(4) {
     animation-delay: 0.35s;
   }
 }
+
 @keyframes wavy {
   to {
     transform: translateY(0) scale(0);
