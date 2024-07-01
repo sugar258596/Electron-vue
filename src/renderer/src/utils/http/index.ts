@@ -2,7 +2,7 @@ import { VAxios } from './axios'
 
 import { deepMerge } from '../index'
 import { clone } from 'lodash'
-import { ContentTypeEnum } from '@/enums/httpEnum'
+import { ContentTypeEnum, ResultEnum } from '@/enums/httpEnum'
 import { AxiosTransform, CreateAxiosOptions } from './axiosTransform'
 import { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { RequestOptions, Result } from '#/axios'
@@ -24,7 +24,12 @@ const transform: AxiosTransform = {
    * @returns
    */
   transformResponseHook: (res: AxiosResponse<Result>, option: RequestOptions) => {
-    return res.data
+    let data: any
+    // 如果返回的状态码为200，说明接口请求成功，可以正常拿到数据
+    if (res.status === ResultEnum.SUCCESS) {
+      data = res.data
+    }
+    return data
   }
 }
 

@@ -1,20 +1,23 @@
 <template>
-  <LayoutFooter>
+  <LayoutFooter v-if="isFooter">
     <div ref="footer">
-      <div class="  flex-center gap-2" v-if="loadMore" v-show="!show">
+      <div class="flex-center gap-2" v-if="loadMore" v-show="!show">
         <div class="w-2.5 h-2.5 bg-black bor-rd-10 dot" v-for="v in 4" :key="v"></div>
       </div>
-      <div class="flex-center" v-else>
-        没有数据来源了哦🍺
-      </div>
+      <div class="flex-center" v-else>没有数据来源了哦🍺</div>
     </div>
   </LayoutFooter>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, computed } from 'vue'
 import { LayoutFooter } from 'ant-design-vue'
 import { useLayoutStore } from '@/store/modules/layout'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+console.log(route.path)
 
 const userLayout = useLayoutStore()
 
@@ -28,9 +31,15 @@ watch(
     show.value = n
   }
 )
-watch(() => userLayout.getCanLoadMore, (n) => {
-  loadMore.value = n
+watch(
+  () => userLayout.getCanLoadMore,
+  (n) => {
+    loadMore.value = n
+  }
+)
 
+const isFooter = computed(() => {
+  return route.path == '/home' ? true : false
 })
 
 onMounted(() => {

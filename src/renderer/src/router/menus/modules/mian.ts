@@ -19,6 +19,14 @@ const Main: AppRouteModule = {
       }
     },
     {
+      path: '/hot',
+      name: 'Hot',
+      component: () => import('@/views/home/Hot/index.vue'),
+      meta: {
+        title: '热门'
+      }
+    },
+    {
       path: '/my',
       name: 'My',
       component: () => import('@/views/my/index.vue'),
