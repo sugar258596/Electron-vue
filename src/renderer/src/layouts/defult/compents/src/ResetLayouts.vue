@@ -1,24 +1,18 @@
 <template>
-  <div
-    ref="resetButton"
+  <div ref="resetButton"
     class="reset fixed right-13 bottom-15 z-999 p-2 bor-rd-10 cursor-pointer bg-light-400 hover:bg-stone-200"
-    @click="handleResetClick"
-  >
+    @click="handleResetClick">
     <BaseSvg :src="reset" :alt="'重置'"></BaseSvg>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, nextTick } from 'vue'
-import { BaseSvg } from '@/components/Svg'
+import { BaseSvg } from "@/components/Svg"
 import { reset } from '@/assets/svg'
 import { useLayoutStore } from '@/store/modules/layout'
 
 const userLaout = useLayoutStore()
-
-const emits = defineEmits<{
-  handleResetClick
-}>()
 
 const resetButton = ref<HTMLDivElement>()
 const resetTime = ref<NodeJS.Timeout>()

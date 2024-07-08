@@ -1,22 +1,14 @@
 <template>
-  <div class="w-full overflow-overlay">
-    <div class="flex gap-5" ref="content">
-      <div
-        class="flex-center relative h-15 px-2 py-3 font-600"
-        v-for="v in hotHeader"
-        @click="headleClick(v)"
-        ref="header"
-        :key="v.id"
-      >
+  <div class="overflow-overlay">
+    <div class="flex gap-5" style="width: fit-content;" ref="content">
+      <div class="flex-center relative h-15 px-2 py-3 font-600" v-for="v in hotHeader" @click="headleClick(v)"
+        ref="header" :key="v.id">
         <div
           class="flex-center gap-2 before:absolute before:content-empty before:bottom-0 before:left-0 before:h-2px before:bg-blue-400 before:w-0 h-full"
-          :class="v.id == active ? 'active  ' : ''"
-        >
+          :class="v.id == active ? 'active  ' : ''">
           <div class="flex-center bor-rd-20 icon h-full cursor-pointer" :class="v.color"></div>
-          <div
-            class="whitespace-nowrap overflow-hidden cursor-pointer hover:color-blue-400 text user-none"
-            :title="v.name"
-          >
+          <div class="whitespace-nowrap overflow-hidden cursor-pointer hover:color-blue-400 text user-none"
+            :title="v.name">
             {{ v.name }}
           </div>
         </div>
@@ -79,12 +71,15 @@ onMounted(() => {
   aspect-ratio: 1/1;
   white-space: nowrap;
 }
+
 .text {
   text-overflow: ellipsis;
   max-width: calc(7 * 1.8ch);
 }
+
 .active {
   --at-apply: color-blue-400;
+
   &::before {
     transition: all 0.2s ease-in-out;
     --at-apply: w-full;
