@@ -1,21 +1,24 @@
 <template>
-  <div class="flex gap-5">
-    <div
-      class="flex-center relative h-15 px-2 py-3 font-600"
-      v-for="v in hotHeader"
-      @click="headleClick(v)"
-      :key="v.id"
-    >
+  <div class="w-full overflow-overlay">
+    <div class="flex gap-5" ref="content">
       <div
-        class="flex-center gap-2 before:absolute before:content-empty before:bottom-0 before:left-0 before:h-2px before:bg-blue-400 before:w-0 h-full"
-        :class="v.id == active ? 'active  ' : ''"
+        class="flex-center relative h-15 px-2 py-3 font-600"
+        v-for="v in hotHeader"
+        @click="headleClick(v)"
+        ref="header"
+        :key="v.id"
       >
-        <div class="flex-center bor-rd-20 icon h-full cursor-pointer" :class="v.color"></div>
         <div
-          class="whitespace-nowrap overflow-hidden cursor-pointer hover:color-blue-400 text"
-          :title="v.name"
+          class="flex-center gap-2 before:absolute before:content-empty before:bottom-0 before:left-0 before:h-2px before:bg-blue-400 before:w-0 h-full"
+          :class="v.id == active ? 'active  ' : ''"
         >
-          {{ v.name }}
+          <div class="flex-center bor-rd-20 icon h-full cursor-pointer" :class="v.color"></div>
+          <div
+            class="whitespace-nowrap overflow-hidden cursor-pointer hover:color-blue-400 text user-none"
+            :title="v.name"
+          >
+            {{ v.name }}
+          </div>
         </div>
       </div>
     </div>
@@ -23,9 +26,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted, unref } from 'vue'
 
+const content = ref()
+const header = ref()
 const active = ref(1)
+const skew = ref(0)
 const hotHeader = reactive([
   {
     id: 1,
@@ -62,6 +68,11 @@ const hotHeader = reactive([
 const headleClick = (v) => {
   active.value = v.id
 }
+
+onMounted(() => {
+  const headerV = unref(header)[0] as HTMLDivElement
+  skew.value = headerV.clientWidth
+})
 </script>
 <style lang="scss" scoped>
 .icon {
@@ -78,5 +89,9 @@ const headleClick = (v) => {
     transition: all 0.2s ease-in-out;
     --at-apply: w-full;
   }
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 </style>
