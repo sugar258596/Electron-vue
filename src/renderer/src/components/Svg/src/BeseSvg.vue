@@ -20,7 +20,7 @@ defineProps({
   },
   color: {
     type: String,
-    default: 'rgba(0, 0, 0, 0.88)'
+    default: 'rgba(0, 0, 0, 0.58)'
   }
 })
 
