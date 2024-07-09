@@ -1,5 +1,5 @@
 <template>
-  <div class="full flex-center p-1 bg-light-400 hover:bg-stone-200 cursor-pointer   bor-rd-10">
+  <div class="flex-center p-1 cursor-pointer  ">
     <div class="text-align-center m-a p-x-0.5">
       <span class="anticon">
         <svg class="icon" aria-hidden="true" v-bind="$attrs">
