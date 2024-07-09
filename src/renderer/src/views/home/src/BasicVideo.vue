@@ -1,19 +1,17 @@
 <template>
   <div class="w-full h-50 bg-blue relative">
-    <div
-      class="absolute bottom-1 left-0 px-2 flex justify-between w-full text-3 color-white user-none"
-    >
+    <div class="absolute bottom-1 left-0 px-2 flex justify-between w-full text-3 color-white user-none">
       <div class="flex-center gap-2">
-        <div class="flex-center gap-1 h-4">
-          <BaseSvg :src="bofan" :alt="'播放量'"></BaseSvg>
+        <div class="flex-center">
+          <BaseIcon icon="icon-bofang" title="播放量" class="text-4" color="#fff"></BaseIcon>
           <span>{{ video.playCount }}</span>
         </div>
-        <div class="flex-center gap-1 h-4">
-          <BaseSvg :src="xiaoxi" :alt="'评论数'"></BaseSvg>
+        <div class="flex-center">
+          <BaseIcon icon="icon-xiaoxi" title="评论数" class="text-4" color="#fff"></BaseIcon>
           <span> {{ video.commentCount }} </span>
         </div>
       </div>
-      <div>
+      <div class="flex-center">
         <span>{{ video.duration }}</span>
       </div>
     </div>
@@ -21,8 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { BaseSvg } from '@/components/Svg'
-import { bofan, xiaoxi } from '@/assets/svg'
+import { BaseIcon } from '@/components/Svg'
 import { VideoProps } from './props'
 
 defineProps<VideoProps>()

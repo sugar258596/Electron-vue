@@ -1,14 +1,13 @@
 <template>
-  <div class="w-12 h-12 fixed right-13 bottom-30 z-999 p-2 bor-rd-10 cursor-pointer bg-light-400 hover:bg-stone-200"
-    @click="handleBackTop" v-show="isShow">
-    <BaseSvg :src="top" alt="返回顶部"></BaseSvg>
+  <div class=" fixed right-13 bottom-30 z-999  text-6 bg-light-400 hover:bg-stone-200  bor-rd-10" @click="handleBackTop"
+    v-show="isShow">
+    <BaseIcon icon="icon-back-top"></BaseIcon>
   </div>
 </template>
 
 <script setup lang="ts">
 
-import { BaseSvg } from "@/components/Svg";
-import { top } from '@/assets/svg'
+import { BaseIcon } from "@/components/Svg";
 
 defineProps({
   isShow: {

@@ -10,17 +10,25 @@
             </div>
             <div class="t-3">
               <span class="p-.8 bg-orange-200 bg-op-70 c-red-600 bor-rd-1">5万点赞</span>
-              <div class="flex items-center gap-1 my-2">
-                <div class="h-5 w-5 opacity-50"><BaseSvg :src="up" /></div>
-                <span class="hover:color-blue-300">蜡笔小新</span>
+              <div class="flex items-center my-1">
+                <div class="opacity-50">
+                  <BaseIcon icon="icon-icon_up" title="播放量" class="text-5" color="#bdbdc3"></BaseIcon>
+                </div>
+                <div class="flex-center">
+                  <span class="hover:color-blue-300">蜡笔小新</span>
+                </div>
               </div>
               <div class="flex gap-2 items-center">
-                <div class="flex items-center gap-1">
-                  <div class="h-5 w-5 opacity-70 bg-zinc"><BaseSvg :src="bofan" /></div>
+                <div class="flex-center  ">
+                  <div class="opacity-70 ">
+                    <BaseIcon icon="icon-bofang" title="播放量" class="text-4" color="#bdbdc3"></BaseIcon>
+                  </div>
                   <span>48.8万</span>
                 </div>
-                <div class="flex items-center gap-1">
-                  <div class="h-5 w-5 opacity-70 bg-zinc"><BaseSvg :src="xiaoxi" /></div>
+                <div class="flex-center ">
+                  <div class=" opacity-70  ">
+                    <BaseIcon icon="icon-xiaoxi" title="评论数" class="text-4" color="#bdbdc3"></BaseIcon>
+                  </div>
                   <span>48.8万</span>
                 </div>
               </div>
@@ -33,8 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { BaseSvg } from '@/components/Svg'
-import { up, bofan, xiaoxi } from '@/assets/svg'
+import { BaseIcon } from '@/components/Svg'
 </script>
 <style lang="scss" scoped>
 .content {

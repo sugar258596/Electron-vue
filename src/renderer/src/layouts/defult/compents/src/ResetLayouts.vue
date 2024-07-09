@@ -1,15 +1,13 @@
 <template>
-  <div ref="resetButton"
-    class="reset fixed right-13 bottom-15 z-999 p-2 bor-rd-10 cursor-pointer bg-light-400 hover:bg-stone-200"
+  <div ref="resetButton" class="reset fixed right-13 bottom-15 z-999 text-6 bg-light-400 hover:bg-stone-200 bor-rd-10"
     @click="handleResetClick">
-    <BaseSvg :src="reset" :alt="'重置'"></BaseSvg>
+    <BaseIcon icon="icon-reset"></BaseIcon>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, nextTick } from 'vue'
-import { BaseSvg } from "@/components/Svg"
-import { reset } from '@/assets/svg'
+import { BaseIcon } from "@/components/Svg"
 import { useLayoutStore } from '@/store/modules/layout'
 
 const userLaout = useLayoutStore()
@@ -38,7 +36,6 @@ const handleResetClick = () => {
 
 <style lang="scss" scoped>
 .reset {
-  box-shadow: 0 0 10px #ccc;
   transition: all 0.3s;
   // 禁止被选中
   user-select: none;
