@@ -10,8 +10,7 @@
             <div class="cursor cursor-pointer" @click="headActive(v.id)">
               <span
                 class="py-2 mx-2 color-black font-black relative before:absolute before:content-empty before:bottom-0 before:left-0 before:h-2px before:bg-pink-500 before:w-0"
-                :class="[v.id == active ? 'avation ' : '']"
-              >
+                :class="[v.id == active ? 'avation ' : '']">
                 {{ v.title }}
               </span>
             </div>
@@ -19,12 +18,7 @@
         </div>
       </div>
       <div class="h-full">
-        <Input
-          v-model:value="search"
-          placeholder="搜索感兴趣的视频 "
-          allowClear
-          @pressEnter="pressEnter"
-        ></Input>
+        <Input v-model:value="search" placeholder="搜索感兴趣的视频 " allowClear @pressEnter="pressEnter"></Input>
       </div>
     </div>
   </layout-header>
@@ -70,7 +64,14 @@ const headActive = (id: number) => {
     router.push({
       path: '/hot'
     })
-    console.log('---')
+  } else if (id == 1) {
+    router.push({
+      path: '/',
+    })
+  } else if (id == 2) {
+    router.push({
+      path: '/anime'
+    })
   }
 }
 
@@ -82,6 +83,7 @@ const pressEnter = () => {
 <style lang="scss" scoped>
 .avation {
   --at-apply: color-pink-500;
+
   &::before {
     transition: all 0.2s ease-in-out;
     --at-apply: color-pink-500 w-full;

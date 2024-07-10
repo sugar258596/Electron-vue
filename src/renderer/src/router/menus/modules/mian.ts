@@ -19,6 +19,14 @@ const Main: AppRouteModule = {
       }
     },
     {
+      path: '/anime',
+      name: 'Anime',
+      component: () => import('@/views/home/Anime/index.vue'),
+      meta: {
+        title: '番剧'
+      }
+    },
+    {
       path: '/hot',
       name: 'Hot',
       component: () => import('@/views/home/Hot/index.vue'),
