@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4584000 */
-  src: url('iconfont.woff2?t=1720545214631') format('woff2'),
-       url('iconfont.woff?t=1720545214631') format('woff'),
-       url('iconfont.ttf?t=1720545214631') format('truetype');
+  src: url('iconfont.woff2?t=1720646041049') format('woff2'),
+       url('iconfont.woff?t=1720646041049') format('woff'),
+       url('iconfont.ttf?t=1720646041049') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,14 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-xihuan:before {
+  content: "\e60e";
+}
+
+.icon-xihuan1:before {
+  content: "\ff47";
 }
 
 .icon-remenhuodong:before {
