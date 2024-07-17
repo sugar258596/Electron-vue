@@ -37,7 +37,13 @@ export default defineConfig({
       }
     ],
     ['bg-linear', { background: 'linear-gradient(to right,#9f9fd9, pink)' }],
-    ['user-none', { 'user-select': 'none' }]
+    ['user-none', { 'user-select': 'none' }],
+    [
+      /^w-cale-(\d+(\.\d+)?(%|px?))-(.*)$/,
+      ([, w, , , c]) => ({
+        width: `calc( ${w.includes('%') || w.includes('px') ? w : w + 'px'} - ${c} )`
+      })
+    ]
   ],
   theme: {
     // 解决小程序不支持 * 选择器

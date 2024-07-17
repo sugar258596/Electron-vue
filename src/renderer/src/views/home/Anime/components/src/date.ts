@@ -30,7 +30,7 @@ export const itemList = [
         ]
       }
     ],
-    color: 'bg-fuchsia-100'
+    color: '#fff3fe'
   },
   {
     id: 2,
@@ -102,7 +102,7 @@ export const itemList = [
         ]
       }
     ],
-    color: 'bg-green-100'
+    color: '#f0fcf6'
   },
   {
     id: 3,
@@ -161,7 +161,7 @@ export const itemList = [
         ]
       }
     ],
-    color: 'bg-sky-100'
+    color: '#f0f7ff'
   },
   {
     id: 4,
@@ -181,6 +181,6 @@ export const itemList = [
         ]
       }
     ],
-    color: 'bg-amber-100'
+    color: '#fef1f1'
   }
 ]
